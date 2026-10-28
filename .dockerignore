@@ -1,0 +1,14 @@
+.env
+.git/
+.github/
+.gitignore
+coverage/
+dist/
+docs/
+docker-build.js
+node_modules/
+package-lock.json
+generate-poster-previews.js
+README.md
+sample.env
+sonar-project.properties
