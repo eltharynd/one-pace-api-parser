@@ -2,6 +2,7 @@ import axios from 'axios'
 import { Logger } from 'ez-ts-logger'
 import { existsSync, readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import Parser from 'rss-parser'
+import environment from '../environment.js'
 import { Feed, Item, Structured } from './rss.model.js'
 
 const CACHE_ROOT = './cache'
@@ -108,12 +109,18 @@ export class RSSController {
 			Logger.info(`Merged ${cached.length} entries from cache`)
 		}
 
-		// try {
-		// 	let repo = (await axios.get(environment.SCRAPE_CACHE)).data
-		// 	console.log(repo)
-		// } catch (e) {
-		// 	Logger.error(e)
-		// }
+		try {
+			let repo: Structured[] = (await axios.get(environment.SCRAPE_CACHE)).data
+			for (let r of repo) {
+				let found = structured.find(s => s.infoHash == r.infoHash)
+				if (found) {
+					for (let key of Object.keys(r)) found[(key = r[key])]
+				}
+			}
+			Logger.info(`Merged ${repo.length} entries from repo`)
+		} catch (e) {
+			Logger.error(e)
+		}
 
 		this.processable = structured
 	}
