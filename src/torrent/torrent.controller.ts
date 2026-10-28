@@ -77,6 +77,8 @@ export class TorrentController {
 		let i = 0
 		for (let torrent of completed) {
 			let target = processable.find(s => s.infoHash == torrent.hash)
+
+			if (!target) continue
 			/* if (!target.files)  */ target.files = []
 
 			let paths: string[] = []
