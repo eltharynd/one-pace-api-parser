@@ -10,8 +10,12 @@
     "node": ">=24.0.0"
   },
   "scripts": {
+    "build": "tsc",
     "start": "node --enable-source-maps dist/index.js",
-    "dev": "nodemon --enable-source-maps dist/index.js"
+    "dev": "nodemon --enable-source-maps dist/index.js",
+    "test": "vitest run",
+    "test:dev": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@ctrl/qbittorrent": "^10.1.1",
