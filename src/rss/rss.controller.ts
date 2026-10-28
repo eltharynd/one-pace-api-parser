@@ -108,15 +108,14 @@ export class RSSController {
 			Logger.info(`Merged ${cached.length} entries from cache`)
 		}
 
-		this.processable = structured
-
-		//TODO also download from repo
 		// try {
 		// 	let repo = (await axios.get(environment.SCRAPE_CACHE)).data
 		// 	console.log(repo)
 		// } catch (e) {
 		// 	Logger.error(e)
 		// }
+
+		this.processable = structured
 	}
 
 	public async getLastUdate(): Promise<Date> {

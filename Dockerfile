@@ -19,6 +19,8 @@ RUN npm run build
 
 FROM node:lts-alpine AS runner
 WORKDIR /app
+RUN mkdir cache
+RUN mkdir output
 COPY package.json ./
 COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=builder /app/dist ./dist
