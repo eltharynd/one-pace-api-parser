@@ -122,7 +122,7 @@ export class TorrentController {
 				environment.TORRENT_CATEGORY_ONCE_COMPLETED,
 			)
 
-			if (++i >= 1) {
+			if (++i >= 9) {
 				i = 0
 				Logger.info(`Sending update`)
 				const body = JSON.stringify(processable)
